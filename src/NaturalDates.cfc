@@ -155,6 +155,14 @@
 					return "#loc.start#,#loc.end#";
 				}
 				
+				// x-x,x-x
+				case "x-x,x-x":
+				{
+					loc.start = startDateWithoutTime(loc.matches[1], loc.matches[2], 1);
+					loc.end = DateAdd("s", -1, DateAdd("m", 1, CreateDateTime(loc.matches[3], loc.matches[4], 1, 0, 0, 0)));
+					return "#loc.start#,#loc.end#";
+				}
+				
 				// x-x-x,x-x-x
 				case "x-x-x,x-x-x":
 				{

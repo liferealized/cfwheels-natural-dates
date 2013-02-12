@@ -106,6 +106,12 @@
 				{
 					return xDaysAgo(days=loc.matches[1]);
 				}
+
+				// last-x-hours
+				case "last-x-hours":
+				{
+					return xHoursAgo(hours=loc.matches[1]);
+				}
 				
 				// last-x-days
 				case "last-x-days":
@@ -245,6 +251,14 @@
 		<cfargument name="month" type="numeric" required="false" default="#Month(Now())#" />
 		<cfargument name="day" type="numeric" required="false" default="#Day(Now())#" />
 		<cfreturn CreateDate(arguments.year, arguments.month, arguments.day) />
+	</cffunction>
+	
+	<cffunction name="xHoursAgo" access="public" output="false" returntype="date">
+		<cfargument name="hours" type="numeric" required="true" />
+		<cfset var loc = {} />
+		<cfset loc.start = DateAdd("h", -arguments.hours, now()) />
+		<cfset loc.end = now()  />
+		<cfreturn "#loc.start#,#loc.end#" />
 	</cffunction>
 	
 	<cffunction name="xDaysAgo" access="public" output="false" returntype="date">

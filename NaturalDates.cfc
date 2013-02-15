@@ -246,6 +246,14 @@
 		</cfscript>
 	</cffunction>
 	
+	<cffunction name="startDateWithHour" access="public" output="false" returntype="date">
+		<cfargument name="year" type="numeric" required="false" default="#Year(Now())#" />
+		<cfargument name="month" type="numeric" required="false" default="#Month(Now())#" />
+		<cfargument name="day" type="numeric" required="false" default="#Day(Now())#" />
+		<cfargument name="hour" type="numeric" required="false" default="#hour(Now())#" />
+		<cfreturn CreateDateTime(arguments.year, arguments.month, arguments.day, arguments.hour, 0, 0) />
+	</cffunction>
+	
 	<cffunction name="startDateWithoutTime" access="public" output="false" returntype="date">
 		<cfargument name="year" type="numeric" required="false" default="#Year(Now())#" />
 		<cfargument name="month" type="numeric" required="false" default="#Month(Now())#" />
@@ -253,7 +261,7 @@
 		<cfreturn CreateDate(arguments.year, arguments.month, arguments.day) />
 	</cffunction>
 	
-	<cffunction name="xHoursAgo" access="public" output="false" returntype="date">
+	<cffunction name="xHoursAgo" access="public" output="false" returntype="string">
 		<cfargument name="hours" type="numeric" required="true" />
 		<cfset var loc = {} />
 		<cfset loc.start = DateAdd("h", -arguments.hours, now()) />
@@ -261,7 +269,7 @@
 		<cfreturn "#loc.start#,#loc.end#" />
 	</cffunction>
 	
-	<cffunction name="xDaysAgo" access="public" output="false" returntype="date">
+	<cffunction name="xDaysAgo" access="public" output="false" returntype="string">
 		<cfargument name="days" type="numeric" required="true" />
 		<cfset var loc = {} />
 		<cfset loc.start = DateAdd("d", -arguments.days, startDateWithoutTime()) />

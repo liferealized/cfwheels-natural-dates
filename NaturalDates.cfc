@@ -264,8 +264,8 @@
 	<cffunction name="xHoursAgo" access="public" output="false" returntype="string">
 		<cfargument name="hours" type="numeric" required="true" />
 		<cfset var loc = {} />
-		<cfset loc.start = DateAdd("h", -arguments.hours, now()) />
-		<cfset loc.end = now()  />
+		<cfset loc.start = DateAdd("h", -arguments.hours, startDateWithHour()) />
+		<cfset loc.end = startDateWithHour()  />
 		<cfreturn "#loc.start#,#loc.end#" />
 	</cffunction>
 	

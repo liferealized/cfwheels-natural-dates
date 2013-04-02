@@ -265,7 +265,7 @@
 		<cfargument name="hours" type="numeric" required="true" />
 		<cfset var loc = {} />
 		<cfset loc.start = DateAdd("h", -arguments.hours, startDateWithHour()) />
-		<cfset loc.end = startDateWithHour()  />
+		<cfset loc.end = Now()  />
 		<cfreturn "#loc.start#,#loc.end#" />
 	</cffunction>
 	
@@ -273,7 +273,7 @@
 		<cfargument name="days" type="numeric" required="true" />
 		<cfset var loc = {} />
 		<cfset loc.start = DateAdd("d", -arguments.days, startDateWithoutTime()) />
-		<cfset loc.end = CreateDateTime(Year(loc.start), Month(loc.start), Day(loc.start), 23, 59, 59)  />
+		<cfset loc.end = Now()  />
 		<cfreturn "#loc.start#,#loc.end#" />
 	</cffunction>
 	
